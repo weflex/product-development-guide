@@ -10,8 +10,8 @@ WeFlex Product Development Guide
 For Non-Product Team Members
 ----
 
-If you came from a non-product background, simply read chapter [ideas](/#Ideas)
-and [bugs](/#Bugs). These chapters will talk about how to submit your ideas and
+If you came from a non-product background, simply read chapter [ideas](#Ideas)
+and [bugs](#Bugs). These chapters will talk about how to submit your ideas and
 how they being converted into bugs and features and finally became publicly
 available (aka. going live).
 
