@@ -97,7 +97,8 @@ In `Bugs` board, we got four lists: `NextUp`, `InProgress`, `ReviewList` and
 `NextUp` list to wait for being assigned to a engineer and then it will move on
 to `InProgress`.
 
-mwith a Github PR link to mark it for further reviews. 
+Once the assignee think the bug is fixed, he could move the item to `ReveiwList`
+with a Github commit and PR link to mark it for further reviews. 
 
 Bugs will be verified and code-reviewed by another developers at Github PR page 
 at first, if and only if this hotfix gets at least one `LGTM` or `SGTM` on Github, 
@@ -115,7 +116,7 @@ of next release. The developer helped verify the bug should follow the steps:
   1. `Fixes #<PR-NUM>` in this way, we are able to quickly find the related PR from commit and find the related commits from PR as well.
   2. `CARD: <URL>` reference to the card url in bugs board
   3. `Reviewed-By: @<github-username>` this flags who reviewed this PR
-3. Submit a comment on the related card with the hash string of hotfix commit.
+3. Submit a comment on the related card with the hash string of hotfix commit and related PR.
 
 Therefore, the entire example of a squashed commit looks like:
 
@@ -126,6 +127,14 @@ Don't send an email to operator
 Fixes #12
 CARD: https://trello.com/xxxxxx
 Reviewed-By: @yorkie
+```
+
+The example card comment:
+
+```
+This bug has been fixed via https://github.com/weflex/product-development-guide/commit/cf96be684c8c5c79618260d10418795c0736c69b.
+
+Related PR: https://github.com/weflex/product-development-guide/pull/1
 ```
 
 (Note: 1st line of message should be less than 50 characters)
