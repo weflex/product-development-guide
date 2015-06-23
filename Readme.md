@@ -64,6 +64,8 @@ Like other engineering problems, we can solve it by careful analysis and
 planning. There are different stages during a full cycle of product development,
 to make tiny ideas going live.
 
+![ideas-board](images/ideas-board.png)
+
 Any improvement of a product starts as an idea. To begin with, go to `Ideas`
 board, create a card in `Inbox` list, write down your idea.
 
