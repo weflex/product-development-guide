@@ -2,7 +2,7 @@ WeFlex Product Development Guide
 ====
 
 <!--
-  Author: Scott Wang
+  Author: Scott Wang, Alex Li
   Date:   2015/06/17
 -->
 
@@ -12,8 +12,8 @@ For Non-Product Team Members
 
 If you came from a non-product background, simply read chapter [ideas](#ideas)
 and [bugs](#bugs). These chapters will talk about how to submit your ideas and
-how they being converted into bugs and features and finally became publicly
-available (aka. going live).
+how your ideas will be converted into bugs and features and finally became
+publicly available (aka. going live).
 
 
 A Kanban to Manage Product Development
@@ -21,7 +21,7 @@ A Kanban to Manage Product Development
 
 Product development is never an easy job. There are so many factors in the
 process of developing a product, so many people (or roles) got evolved in it.
-To make a efficient process, we have to always keep our goals simple and clear.
+To make an efficient process, we have to always keep our goals simple and clear.
 
 That's how `Kanban` and `Trello` comes in to solve the problem.
 [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) is part of agile
@@ -32,9 +32,10 @@ other people are working on.
 Kanban is simple. You have `boards` made up of several columns (`lists`),
 marking different stages, from left to right. Each task on this board is a
 `card` (sticker), moving through lists. A card always starts from the left-most
-list, ends up in the right-most one, and been archived at last.
+list then moves column by column to the right-most list, and been archived at
+last.
 
-Different type of task have different lifecycle. Tasks in product development
+Different types of tasks have different lifecycle. Tasks in product development
 have different types:
  
 + Enhancements (new features)
@@ -42,7 +43,7 @@ have different types:
 + Docs
 + Tooling
 
-Among them, `enhancements` and `bug fixes` are the most valuable tasks, and we
+Among them, `enhancements` and `bug fixes` are the most critical tasks, and we
 will spent most of our time working on them.
 
 To visualize tasks and stages, we feed all our working items into three boards:
@@ -58,10 +59,10 @@ use Kanban to manage product development workflow.
 Ideas
 ----
 
-Given its difficulty, product development is never a mythical procedure. Like
-other engineering problems, we can solve it by careful analysis and planning.
-There are different stages inside a full cycle of product development, to make
-tiny ideas going live.
+Given its difficulty, product development is never an unattainable procedure.
+Like other engineering problems, we can solve it by careful analysis and
+planning. There are different stages during a full cycle of product development,
+to make tiny ideas going live.
 
 Any improvement of a product starts as an idea. To begin with, go to `Ideas`
 board, create a card in `Inbox` list, write down your idea.
@@ -111,18 +112,18 @@ re-fix it.
 
 ![enhancements-board](images/enhancements-board.png)
 
-Similar to the `Bugs`, the `Enhancements` board also came with four lists,
+Similar to the `Bugs`, the `Enhancements` board also come with four lists,
 `NextUp`, `InProgress`, `Staging` and `Live`. Each card in `Enhancements`
 travels from the left-most `NextUp` waitlist and ends up in going `Live`.
 
 A card moves into `Staging` list means it coding (if needed) is done and now
-it's time to verify its functions. This step would usually take couple of
-days, usually a week.
+it's time to verify its functions. This step would usually take a couple of
+days to a week.
 
 If the feature is correct (function-wise) and stable, we will move the card to
 `Live` and put it into production.
 
-`Work In Porgress` items in `Enhancement` workflow may be in these types:
+`Work In Progress` items in `Enhancement` workflow may be in these types:
 
 + user interview
 + design
@@ -134,7 +135,7 @@ If the feature is correct (function-wise) and stable, we will move the card to
 Meetings
 ----
 
-As you may noticed, the method I proposed in this guide evolved meetings. There
+As you may noticed, the method I proposed in this guide involved meetings. There
 are three types of meetings in this system.
 
 
@@ -154,7 +155,7 @@ board.
 
 ### Progress Checkpoints
 
-Progress checkpoints are meetings held by project manager at middle of each
+Progress checkpoints are meetings held by project manager in the middle of each
 product cycle to check if everyone is on the right course and project target is
 achievable at the end of this cycle. Project manager is responsible to alert and
 offer possible helps to those team members lagering the schedule.
