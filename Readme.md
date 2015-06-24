@@ -94,21 +94,53 @@ board.
 
 In `Bugs` board, we got four lists: `NextUp`, `InProgress`, `ReviewList` and
 `Resolved`. Any bug-fix task transferred to `Bugs` will first wait in the
-`NextUp` list to wait for being assigned to a engineer and then it will moves on
+`NextUp` list to wait for being assigned to a engineer and then it will move on
 to `InProgress`.
 
 Once the assignee think the bug is fixed, he could move the item to `ReveiwList`
-to mark it for further reviews. Bugs will be verified and code-reviewed by
-another developer to make sure that the bug is fixed and the fix is
-clean. Result will be either `accepted` or `rejected`.
+with a Github commit and PR link to mark it for further reviews. 
+
+Bugs will be verified and code-reviewed by another developers at Github PR page 
+at first, if and only if this hotfix gets at least one `LGTM` or `SGTM` on Github, 
+one of team members is able to merge this into proper branch(s). And the commiter 
+would update it in `Bugs` board to make sure that the bug is fixed and the fix is 
+clean.
+
+Result in board will be either `accepted` or `rejected`:
 
 An `accepted` sign-off means this bug is fixed and will be in the bug fix list
-of next release. The developer helped verify the bug should write a comment in
-the card say 'Verified and code-reviewed by _someone_ '.
+of next release. The developer helped verify the bug should follow the steps:
+
+1. Squash all the commits from PR page into 1 commit with a graceful message.
+2. In the commit message, we should have the following information to be set:
+  1. `Fixes #<PR-NUM>` in this way, we are able to quickly find the related PR from commit and find the related commits from PR as well.
+  2. `CARD: <URL>` reference to the card url in bugs board
+  3. `Reviewed-By: @<github-username>` this flags who reviewed this PR
+3. Submit a comment on the related card with the hash string of hotfix commit and related PR.
+
+Therefore, the entire example of a squashed commit looks like:
+
+```
+Don't send an email to operator
+[other messages...]
+
+Fixes #12
+CARD: https://trello.com/xxxxxx
+Reviewed-By: @yorkie
+```
+
+The example card comment:
+
+```
+This bug has been fixed via https://github.com/weflex/product-development-guide/commit/cf96be684c8c5c79618260d10418795c0736c69b.
+
+Related PR: https://github.com/weflex/product-development-guide/pull/1
+```
+
+(Note: 1st line of message should be less than 50 characters)
 
 If `rejected`, card will be push back to `InProgress` again and assignee has to
 re-fix it.
-
 
 ### Enhancements
 
@@ -151,7 +183,7 @@ product team will identify:
 + is it worth working on?
 
 Finally, based on the discussion, product manager will decide bugs and features
-to work on for the next cycle. Those cards moves on to `Enhancements` and `Bugs`
+to work on for the next cycle. Those cards move on to `Enhancements` and `Bugs`
 board.
 
 
