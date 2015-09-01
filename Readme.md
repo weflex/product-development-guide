@@ -2,205 +2,160 @@ WeFlex Product Development Guide
 ====
 
 <!--
-  Author: Scott Wang, Alex Li
-  Date:   2015/06/17
+  Author: Scott Wang, Yorkie Liu
+  Date:   2015/09/01
 -->
+
+
+Preface
+----
+
+This document is for WeFlex product team members, especially with enginnering
+backgrounds. If you found any difficulty reading through it, please don't worry
+and read [the next chapter](#for-non-product-team-members).
 
 
 For Non-Product Team Members
 ----
 
-If you came from a non-product background, simply read chapter [ideas](#ideas)
-and [bugs](#bugs). These chapters will talk about how to submit your ideas and
-how your ideas will be converted into bugs and features and finally became
-publicly available (aka. going live).
+If you came from a non-product background, go ahead and read how to
+[write down your ideas](#write-dow-your-ideas). This should serve you a
+picture about how to co-operate with the product team.
+
+### Write Down Your Ideas
+
+Any improvement of our product may starts as a very minimalistic sentense
+describing vaguely about the improvement. It is product manager's job to
+interview who came up with this idea and filling more details in it.
+
+To begin with, you could go to
+[Inbox board](https://trello.com/b/Z7EqW3eV/inbox) and under your list, add a
+card simply describe your problem. For example, I (Scott) want to request a new
+feature to improve our data analytics, so I went on Inbox and open a card:
+
+```
+
+.-------------------.  .------ ... (other lists)
+|  Scott            |  |  Sean
+| .---------------. |  |
+| ' User behavior ' |  |
+| ' analytics     ' |  |
+| `---------------' |  |
+| ... (other cards) |  |
+|                   |  |
+
+```
 
 
-A Kanban to Manage Product Development
+
+Product Tasks
 ----
 
-Product development is never an easy job. There are so many factors in the
-process of developing a product, so many people (or roles) got evolved in it.
-To make an efficient process, we have to always keep our goals simple and clear.
+**TL;DR**
 
-That's how `Kanban` and `Trello` comes in to solve the problem.
-[Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) is part of agile
-product development. It helps the whole team to visualize tasks by stages
-(**waitlist**, **next up**, **on-going**, **finished**, etc) and to see what
-other people are working on.
+Product development is never an easy job, yet we can always broke it down to
+tasks, which involves different kind and levels.A product task could be either a
+`new feature`, a `enhancement`, a `technical issue` or a `bug`.
 
-Kanban is simple. You have `boards` made up of several columns (`lists`),
-marking different stages, from left to right. Each task on this board is a
-`card` (sticker), moving through lists. A card always starts from the left-most
-list then moves column by column to the right-most list, and been archived at
-last.
-
-Different types of tasks have different lifecycle. Tasks in product development
-have different types:
- 
-+ Enhancements (new features)
-+ Bug fixes
-+ Docs
-+ Tooling
-
-Among them, `enhancements` and `bug fixes` are the most critical tasks, and we
-will spent most of our time working on them.
-
-To visualize tasks and stages, we feed all our working items into three boards:
-    
-+ Ideas
-+ Bugs
-+ Enhancements
-
-Now we can use boards to organize tasks and lists to organize statuses, let's
-use Kanban to manage product development workflow.
-
-
-Ideas
-----
-
-Given its difficulty, product development is never an unattainable procedure.
-Like other engineering problems, we can solve it by careful analysis and
-planning. There are different stages during a full cycle of product development,
-to make tiny ideas going live.
-
-![ideas-board](images/ideas-board.png)
-
-Any improvement of a product starts as an idea. To begin with, go to `Ideas`
-board, create a card in `Inbox` list, write down your idea.
-
-Ideas could be a few sentences describing a problem users are facing, a user
-complain, or your vision about this product. It could be general and
-unorganized. Just leave it and product team will discuss and evaluate ideas in
-`Inbox` on the next `product review` meeting.
-
-
-Task Lifecycle
-----
-
-<!-- TODO: explain -->
-
-+ task waitlist (next-up)
-+ work in progress
-+ functional testing (staging)
-+ going live
-
-Each stage above has its corresponding task-list in `Bugs` and `Enhancements`
-board.
+All these tasks could be referenced as `improvement` in latter chapters.
 
 ### Bugs
 
-![bugs-board](images/bugs-board.png)
+> Bugs are not correctly implemented features.
 
-In `Bugs` board, we got four lists: `NextUp`, `InProgress`, `ReviewList` and
-`Resolved`. Any bug-fix task transferred to `Bugs` will first wait in the
-`NextUp` list to wait for being assigned to a engineer and then it will move on
-to `InProgress`.
+Bugs are usually implementation problems. If some behavior is specified but not
+executed as our expection, then probably you have found a bug.
 
-Once the assignee think the bug is fixed, he could move the item to `ReveiwList`
-with a Github commit and PR link to mark it for further reviews. 
+If reporter is not coming from a technical background (i.e. he is not a
+developer), ask the product manager to report the bug for you.  Bugs get
+reported to github issues with detailed reports attached. In bug reports,
+reporter should provide a detailed procedure to reproduce the bug.
 
-Bugs will be verified and code-reviewed by another developers at Github PR page 
-at first, if and only if this hotfix gets at least one `LGTM` or `SGTM` on Github, 
-one of team members is able to merge this into proper branch(s). And the commiter 
-would update it in `Bugs` board to make sure that the bug is fixed and the fix is 
-clean.
+#### Fixing bugs
 
-Result in board will be either `accepted` or `rejected`:
+Depending on how critical the bug is and how difficult to fix it, product
+manager decides to fix it in either this cycle (aka. `hot fix`) or the next
+one. It is also product manager's job to assign bugs to developers.
 
-An `accepted` sign-off means this bug is fixed and will be in the bug fix list
-of next release. The developer helped verify the bug should follow the steps:
+#### Merging bug fixes
 
-1. Squash all the commits from PR page into 1 commit with a graceful message.
-2. In the commit message, we should have the following information to be set:
-  1. `Fixes #<PR-NUM>` in this way, we are able to quickly find the related PR from commit and find the related commits from PR as well.
-  2. `CARD: <URL>` reference to the card url in bugs board
-  3. `Reviewed-By: @<github-username>` this flags who reviewed this PR
-3. Submit a comment on the related card with the hash string of hotfix commit and related PR.
+Once fixed, assignee usually puts his/her clean fix in a single commit, leaving
+a message about which bug this commit fixes and which Github issue this bug
+associates. Then assignee submits his bug fix as a `pull request`, merging from
+bug-fix branch to production branch. Assignee should always reference the bug
+issue in pull request description and then assign this pull request to proper
+developer, who either owning the repository, or working on it.
 
-Therefore, the entire example of a squashed commit looks like:
+Each pull request requires at least one `LGTM` (looks good to me) or `SGTM`
+(seems good to me) comment to pass and get merged.
 
-```
-Don't send an email to operator
-[other messages...]
 
-Fixes #12
-CARD: https://trello.com/xxxxxx
-Reviewed-By: @yorkie
-```
+### Technical Issues
 
-The example card comment:
+> Technical issues are not fully designed features.
 
-```
-This bug has been fixed via https://github.com/weflex/product-development-guide/commit/cf96be684c8c5c79618260d10418795c0736c69b.
+Technical issues are spec problems. If set of bahaviors are designed but what
+happened in reality is not included, then probably you have found a technical
+issue.
 
-Related PR: https://github.com/weflex/product-development-guide/pull/1
-```
+Technical issues get reported to github issues with a report attached. Like bug
+reports, this report contains detailed information about how to reproduce the
+missing scenarios. Product manager is responsible for distinguishing bugs and
+technical issues and writing reports.
 
-(Note: 1st line of message should be less than 50 characters)
+Technical issues applies same [fixing](#fixing-bugs) and
+[merging](#merging-bug-fixes) strategies with bugs.
 
-If `rejected`, card will be push back to `InProgress` again and assignee has to
-re-fix it.
 
 ### Enhancements
 
-![enhancements-board](images/enhancements-board.png)
+> Enhancements are not properly designed features.
 
-Similar to the `Bugs`, the `Enhancements` board also come with four lists,
-`NextUp`, `InProgress`, `Staging` and `Live`. Each card in `Enhancements`
-travels from the left-most `NextUp` waitlist and ends up in going `Live`.
+Enhancments are upcoming design problems. If a feature is designed but not in
+appropriate form, then probably what you have found is a enchancement.
 
-A card moves into `Staging` list means it coding (if needed) is done and now
-it's time to verify its functions. This step would usually take a couple of
-days to a week.
+#### User stories for enhancements
 
-If the feature is correct (function-wise) and stable, we will move the card to
-`Live` and put it into production.
+Before [review days](#review-days), product manager is responsible doing
 
-`Work In Progress` items in `Enhancement` workflow may be in these types:
+1. collect analytic data;
+2. interview users;
 
-+ user interview
-+ design
-+ implementation
-+ integration/unit testing
+to back up his (or someone else's) request of this enhancement.
+
+He needs to reason why that
+
+1. current design is not the best;
+2. it worth time and money to do this improvement;
+
+and compile them into a `user story` to help his co-workers to understand what
+exact problem this enhancement is to solve.
+
+
+#### Difference between enhancements and technical issues
+
+The major difference between enhancements and technical issues is that
+enhancements emphysis on _not properly designed_ while the latter one emphsis on
+_not fully designed_.
+
+
+### New Features
+
+> Ah! A feature!
+
+New features are usually new business problems. If a feature or function is
+designed and implemented at all, then it probably be a new feature (to work on).
+
+A feature requires a user story, similar to the
+[enhanment one](#user-stories-for-enhancements).
 
 
 
-Meetings
+Review Days
 ----
 
-As you may noticed, the method I proposed in this guide involved meetings. There
-are three types of meetings in this system.
-
-
-### Product Reviews
-
-Product reviews are organized by product manager at the beginning of each cycle,
-team members who submitted ideas will talk about the story behind it and the
-product team will identify:
-
-+ is it a bug or a enhancement?
-+ is it worth working on?
-
-Finally, based on the discussion, product manager will decide bugs and features
-to work on for the next cycle. Those cards move on to `Enhancements` and `Bugs`
-board.
-
-
-### Progress Checkpoints
-
-Progress checkpoints are meetings held by project manager in the middle of each
-product cycle to check if everyone is on the right course and project target is
-achievable at the end of this cycle. Project manager is responsible to alert and
-offer possible helps to those team members lagering the schedule.
-
-
-### Demo days
-
-At the end of a product cycle, we will host a demo day for feature owners
-(engineers, designers) to demonstrate what he have done in the past cycle and
-celebrate his achievement together with the whole team.
-
+Review day is a meeting, hold at end of each cycle, to report and demo what
+product team has achieved in last cycle and plan for the next one.
 
 
 References
