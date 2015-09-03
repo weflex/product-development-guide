@@ -1,11 +1,6 @@
 WeFlex Product Development Guide
 ====
 
-<!--
-  Author: Scott Wang, Yorkie Liu
-  Date:   2015/09/01
--->
-
 
 Preface
 ----
@@ -24,7 +19,7 @@ picture about how to co-operate with the product team.
 
 ### Write Down Your Ideas
 
-Any improvement of our product may starts as a very minimalistic sentense
+Any improvement of our product may start as a very minimalistic sentense
 describing vaguely about the improvement. It is product manager's job to
 interview who came up with this idea and filling more details in it.
 
@@ -54,8 +49,8 @@ Product Tasks
 **TL;DR**
 
 Product development is never an easy job, yet we can always broke it down to
-tasks, which involves different kind and levels.A product task could be either a
-`new feature`, a `enhancement`, a `technical issue` or a `bug`.
+tasks, which involves different kind and levels. A product task could be either
+a `new feature`, a `enhancement`, a `technical issue` or a `bug`.
 
 All these tasks could be referenced as `improvement` in latter chapters.
 
@@ -67,7 +62,7 @@ Bugs are usually implementation problems. If some behavior is specified but not
 executed as our expection, then probably you have found a bug.
 
 If reporter is not coming from a technical background (i.e. he is not a
-developer), ask the product manager to report the bug for you.  Bugs get
+developer), ask the product manager to report the bug for you. Bugs get
 reported to github issues with detailed reports attached. In bug reports,
 reporter should provide a detailed procedure to reproduce the bug.
 
@@ -156,6 +151,60 @@ Review Days
 
 Review day is a meeting, hold at end of each cycle, to report and demo what
 product team has achieved in last cycle and plan for the next one.
+
+
+Versions
+----
+
+Our major repos follows open-source versioning convention
+`v$Major.$Minor.$patch`. At most cases, major version is stable at `1`, minor
+version increases as cycle goes on and patch number iterates in each cycle from
+`1`.
+
+
+Developing, Testing, Staging and Deployment Strategies
+----
+
+Any finished improvement requires 4 stages in its lifecycle:
+
+1. Developing;
+2. Testing;
+3. Staging;
+
+and finally,
+
+4. Production.
+
+### Staging Proposal
+
+Once developer finished at least one improvement and he's feeling confident
+about what he had achieved, he can call for a staging proposal on github,
+merging from `devel` to `master`. Developer should list what items he had
+achieved during this pull request and ask for code-reviews.
+
+Once passed code-review with at least one `LGTM` or `SGTM`, developer merges his
+proposal and push a version tag on `HEAD`. This will trigger and automated
+deployment on staging server (`121.201.14.243`).
+
+````bash
+
+> git tag v1.7.2;
+> git push --tags
+
+````
+
+This pushes a `v1.7.2` tag to github and thus trigger an automated deployment
+within 10 minutes.
+
+
+### Releasing
+
+Once a cycle finished, we generate a staging proposal, containing everything we
+have achieved during this cycle and create a build. Product manager and testers
+take a good examine on this build for few days, with developers (if needed).
+
+If testing passed, Scott will manual deploy the build to production server and
+checkout a git branch for that release.
 
 
 References
