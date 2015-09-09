@@ -96,7 +96,8 @@ issue.
 Technical issues get reported to github issues with a report attached. Like bug
 reports, this report contains detailed information about how to reproduce the
 missing scenarios. Product manager is responsible for distinguishing bugs and
-technical issues and writing reports.
+technical issues and writing reports. Once reported, reporter should reference
+the github issue on related trello card(s) (if any).
 
 Technical issues applies same [fixing](#fixing-bugs) and
 [merging](#merging-bug-fixes) strategies with bugs.
@@ -107,7 +108,7 @@ Technical issues applies same [fixing](#fixing-bugs) and
 > Enhancements are not properly designed features.
 
 Enhancments are upcoming design problems. If a feature is designed but not in
-appropriate form, then probably what you have found is a enchancement.
+an appropriate form, then probably it is an enchancement to work on.
 
 #### User stories for enhancements
 
@@ -156,10 +157,10 @@ product team has achieved in last cycle and plan for the next one.
 Versions
 ----
 
-Our major repos follows open-source versioning convention
-`v$Major.$Minor.$patch`. At most cases, major version is stable at `1`, minor
-version increases as cycle goes on and patch number iterates in each cycle from
-`1`.
+Our major repos follows open-source versioning convention (aka,
+[sementic versioning](http://semver.org/)). At most cases, major version is
+stable at `1`, minor version increases as cycle goes on and patch number
+iterates in each cycle from `1`.
 
 
 Developing, Testing, Staging and Deployment Strategies
